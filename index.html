@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<link rel="shortcut icon" href="favicon.ico">
+	<meta charset="UTF-8">
+	<title>i3aldram</title>
+	<style>
+		body {
+			background: #0f0e11;
+			margin: 0;
+			height: 100vh;
+			font-family: BigNoodleTooOblique, sans-serif;
+			color: #fff;
+			/*font-style: oblique;*/
+		}
+
+		#site_header {
+			height: 50px;
+			background: #4b367c;
+			padding: 0 20px;
+			line-height: 50px;
+			font-size: 28px;
+		}
+
+		#site_content {
+			display: flex;
+			flex-direction: row;
+			/*height: 100%;*/
+		}
+
+		.col {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#player {
+			flex: auto;
+			padding: 20px;
+		}
+
+		#chat {
+			border-left: 1px solid hsla(0,0%,100%,.05)!important;
+			width: 340px;
+		}
+
+		.button {
+			display: inline-block;
+			color: #fff;
+			border: none;
+			border-radius: 4px! important;
+			background-color: #6441a4;
+			width: fit-content;
+			padding: 8px 24px;
+			margin: 16px 16px 0 0;
+			cursor: pointer;
+			font-size: 19px;
+			text-decoration: none;
+		}
+
+		@font-face {
+			font-family: BigNoodleTooOblique;
+			src: url(BigNoodleTooOblique.ttf);
+		}
+	</style>
+</head>
+<body>
+
+
+
+	<header id="site_header">
+		#ТвичСосиПидорас #СвободуБалдраму
+	</header>
+	<main id="site_content">
+		<div id="player" class="col">
+			<iframe frameborder="0" scrolling="no" id="embed_player" src="https://mixer.com/embed/player/i3aldram" height="100%" width="100%"></iframe>
+			<div id="buttons">
+				<a href="https://vk.com/chetpoc" class="button" target="_blank">Донат сюда</a>
+				<a href="https://vk.com/chetpoc" class="button" target="_blank">Группа ВК</a>
+			</div>
+		</div>
+		<div id="chat" class="col">
+			<iframe frameborder="0" scrolling="no" id="embed_chat" src="https://www.twitch.tv/embed/psychopaticclaymore/chat?darkpopout" height="100%" width="100%"></iframe>
+		</div>
+	</main>
+
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		var playerWidth = $('#player').width();
+		$('#embed_player').height(playerWidth/16*9);
+		$('#chat').height($(document).height()-50);
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
