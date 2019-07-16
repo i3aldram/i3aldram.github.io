@@ -12,7 +12,7 @@
 			font-family: BigNoodleTooOblique, sans-serif;
 			color: #fff;
 			/*font-style: oblique;*/
-			overflow: hidden;
+			/*overflow: hidden;*/
 		}
 
 		#site_header {
@@ -123,7 +123,7 @@
 
 
 	<header id="site_header">
-		#ТвичСосиКотик #СвободуБалдраму
+		#ТвичСосиПиструн #СвободуБалдраму
 	</header>
 	<main id="site_content">
 		<div id="player" class="col">
@@ -144,11 +144,6 @@
 
 
 			<div id="buttons">
-
-
-
-
-
 				<div class="dropdown">
 					<button class="button">Сменить плеер</button>
 					<div class="dropdown-content">
@@ -167,8 +162,6 @@
 						<div id="enable_chat_goodgame" class="">GG</div>
 					</div>
 				</div>
-
-
 
 
 
@@ -201,7 +194,7 @@
 		var setPlayerChatHeight = function(){
 			var playerWidth = $('#player').width();
 			$('.embed_player').height(playerWidth/16*9);
-			$('#chats').height($(document).height()-50);
+			$('#chats').height($(document).height()-50-30);
 		}
 		setPlayerChatHeight();
 
