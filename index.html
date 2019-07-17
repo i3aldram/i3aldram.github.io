@@ -147,7 +147,7 @@
 				<div class="dropdown">
 					<button class="button">Сменить плеер</button>
 					<div class="dropdown-content">
-						<div id="enable_pleyer_goodgame" class="">GG</div>
+						<div id="enable_pleyer_goodgame" class="">GoodGame</div>
 						<div id="enable_pleyer_mixer" class="">Mixer</div>
 						<div id="enable_pleyer_youtube" class="">Youtube</div>
 					</div>
@@ -159,7 +159,9 @@
 					<button class="button">Сменить чат</button>
 					<div class="dropdown-content">
 						<div id="enable_chat_twitch" class="">Twitch</div>
-						<div id="enable_chat_goodgame" class="">GG</div>
+						<div id="enable_chat_goodgame" class="">GoodGame</div>
+						<div id="enable_chat_twitch" class="">Mixer</div>
+						<div id="enable_chat_goodgame" class="">Youtube</div>
 					</div>
 				</div>
 
@@ -171,17 +173,17 @@
 		</div>
 		<div id="chats">
 			<div id="chat_twitch" class="col">
-				<iframe frameborder="0" scrolling="no" id="embed_chat" src="https://www.twitch.tv/embed/psychopaticclaymore/chat?darkpopout" height="100%" width="100%"></iframe>
+				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://twitch.tv/embed/psychopaticclaymore/chat?darkpopout" height="100%" width="100%"></iframe>
 			</div>
 			<div id="chat_goodgame" class="col">
-				<iframe frameborder="0" scrolling="no" id="embed_chat" src="https://goodgame.ru/chat/148836" height="100%" width="100%"></iframe>
+				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://goodgame.ru/chat/148836" height="100%" width="100%"></iframe>
 			</div>
-			<!-- <div id="chat_mixer" class="col">
-				<iframe frameborder="0" scrolling="no" id="embed_chat" src="https://www.twitch.tv/embed/psychopaticclaymore/chat?darkpopout" height="100%" width="100%"></iframe>
-			</div> -->
-			<!-- <div id="chat_youtube" class="col">
-				<iframe frameborder="0" scrolling="no" id="embed_chat" src="https://www.youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA" height="100%" width="100%"></iframe>
-			</div> -->
+			<div id="chat_mixer" class="col">
+				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://mixer.com/embed/chat/i3aldram" height="100%" width="100%"></iframe>
+			</div>
+			<div id="chat_youtube" class="col">
+				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA" height="100%" width="100%"></iframe>
+			</div>
 		</div>
 	</main>
 
@@ -248,7 +250,18 @@
 
 			setPlayerChatHeight();
 		});
+		$('#enable_chat_mixer').click(function() {
+			$('#chats div').hide();
+			$('#chat_mixer').show();
 
+			setPlayerChatHeight();
+		});
+		$('#enable_chat_youtube').click(function() {
+			$('#chats div').hide();
+			$('#chat_youtube').show();
+
+			setPlayerChatHeight();
+		});
 
 
 
