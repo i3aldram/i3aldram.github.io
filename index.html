@@ -7,12 +7,17 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<style>
 		body {
-			background: #0f0e11;
+			/*background-color: #0f0e11;*/
 			margin: 0;
 			min-height: 100vh;
-			height: 1080px;
+/*			height: 1080px;*/
 			font-family: BigNoodleTooOblique, sans-serif;
+			font-size: 19px;
 			color: #fff;
+			background: url(doomguy_text.png), #0f0e11;
+			background-position: center 100%;
+			background-repeat: no-repeat;
+			transition: background-position 1s;
 		}
 
 		#site_header {
@@ -36,7 +41,7 @@
 
 		#main_content {
 			flex: auto;
-			padding: 20px;
+			/*padding: 20px;*/
 		}
 
 		#right_sidebar {
@@ -52,9 +57,9 @@
 			background-color: #6441a4;
 			width: fit-content;
 			padding: 4px 24px;
-			margin: 8px 8px 0 8px;
+			margin: 8px;
 			cursor: pointer;
-			font-size: 19px;
+			/*font-size: 20px;*/
 			text-decoration: none;
 			font-family: BigNoodleTooOblique, sans-serif;
 		}
@@ -118,6 +123,33 @@
 			font-size: 15px;
 		}
 
+		#info {
+			border-top: 1px solid hsla(0,0%,100%,.05);
+			margin: 4px 0;
+			padding: 8px 0;
+		}
+
+		#info span {
+			margin-left: 8px;
+			margin-right: 20px;
+		}
+/*
+		#game {
+			float: left;
+		}*/
+
+		#viewers {
+			float: right;
+		}
+
+		#site_footer {
+			height: 50px;
+			background: #232127;
+			margin-top: 400px;
+			line-height: 50px;
+			text-align: center;
+		}
+
 		@font-face {
 			font-family: BigNoodleTooOblique;
 			src: url(BigNoodleTooOblique.ttf);
@@ -144,7 +176,7 @@
 </head>
 <body>
 	<header id="site_header">
-		<span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Флексодром имени Балдрама
+		<span class="glyphicon glyphicon-sunglasses" aria-hidden="true"></span> Флексодром имени Балдрама <span id="title"></span>
 	</header>
 	<main id="site_content">
 
@@ -190,6 +222,13 @@
 					</div>
 				</div>
 			</div>
+
+
+
+			<div id="info">
+				<span id="game"></span>
+				<span id="viewers"></span>
+			</div>
 		</div>
 
 
@@ -217,80 +256,110 @@
 
 
 	</main>
+	<footer id="site_footer">
+		Created by Coobie ^^
+	</footer>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script>
-
-		var fixFullHeight = function(){
-			var playerWidth = $('.embed_player').width();
-			$('.embed_player').height(playerWidth / 16*9);
-			$('#right_sidebar').height($(window).height()-50);
-		}();
+		$(document).ready(function () {
 
 
 
 
+			var fixFullHeight = function(){
+				var playerWidth = $('.embed_player').width();
+				$('.embed_player').height(playerWidth / 16*9);
+				$('#right_sidebar').height($(window).height()-50);
+			}();
 
 
 
-		$('#enable_pleyer_goodgame').click(function() {
-			$('#players div').hide();
-			$('#player_goodgame').show();
+			$.ajax({
+				type: "GET",
+				url: "https://goodgame.ru/api/getchannelstatus?id=148836",
+				dataType: "xml",
+				success: function (xml) {
+					$xml = $(xml);
+					var streamTitle = $xml.find("title").text();
+					var streamGame = $xml.find("games").text();
+					var streamViewers = $xml.find("viewers").text();
+					$('#title').text('- ' + streamTitle);
+					$('#game').text('Игра: ' + streamGame);
+					$('#viewers').text('Зрителей: ' + streamViewers);
+				}
+			});
 
-			$('#player_mixer iframe').attr('src', $('#player_mixer iframe').attr('src'));
-			$('#player_youtube iframe').attr('src', $('#player_youtube iframe').attr('src'));
 
-			fixFullHeight();
+
+			$(window).scroll(function() {
+				if($(window).scrollTop() + $(window).height() == $(document).height()){
+					$('body').css('background-position', 'center 100%');
+				} else {
+					$('body').css('background-position', 'center 150%');
+				}
+			});
+
+
+
+			$('#enable_pleyer_goodgame').click(function() {
+				$('#players div').hide();
+				$('#player_goodgame').show();
+
+				$('#player_mixer iframe').attr('src', $('#player_mixer iframe').attr('src'));
+				$('#player_youtube iframe').attr('src', $('#player_youtube iframe').attr('src'));
+
+				fixFullHeight();
+			});
+			$('#enable_pleyer_mixer').click(function() {
+				$('#players div').hide();
+				$('#player_mixer').show();
+
+				$('#player_goodgame iframe').attr('src', $('#player_goodgame iframe').attr('src'));
+				$('#player_youtube iframe').attr('src', $('#player_youtube iframe').attr('src'));
+
+				fixFullHeight();
+			});
+			$('#enable_pleyer_youtube').click(function() {
+				$('#players div').hide();
+				$('#player_youtube').show();
+
+				$('#player_goodgame iframe').attr('src', $('#player_goodgame iframe').attr('src'));
+				$('#player_mixer iframe').attr('src', $('#player_mixer iframe').attr('src'));
+
+				fixFullHeight();
+			});
+
+
+
+
+
+			$('#enable_chat_twitch').click(function() {
+				$('#right_sidebar div').hide();
+				$('#chat_twitch').show();
+
+				fixFullHeight();
+			});
+			$('#enable_chat_goodgame').click(function() {
+				$('#right_sidebar div').hide();
+				$('#chat_goodgame').show();
+
+				fixFullHeight();
+			});
+			$('#enable_chat_mixer').click(function() {
+				$('#right_sidebar div').hide();
+				$('#chat_mixer').show();
+
+				fixFullHeight();
+			});
+			$('#enable_chat_youtube').click(function() {
+				$('#right_sidebar div').hide();
+				$('#chat_youtube').show();
+
+				fixFullHeight();
+			});
+
+
 		});
-		$('#enable_pleyer_mixer').click(function() {
-			$('#players div').hide();
-			$('#player_mixer').show();
-
-			$('#player_goodgame iframe').attr('src', $('#player_goodgame iframe').attr('src'));
-			$('#player_youtube iframe').attr('src', $('#player_youtube iframe').attr('src'));
-
-			fixFullHeight();
-		});
-		$('#enable_pleyer_youtube').click(function() {
-			$('#players div').hide();
-			$('#player_youtube').show();
-
-			$('#player_goodgame iframe').attr('src', $('#player_goodgame iframe').attr('src'));
-			$('#player_mixer iframe').attr('src', $('#player_mixer iframe').attr('src'));
-
-			fixFullHeight();
-		});
-
-
-
-
-
-		$('#enable_chat_twitch').click(function() {
-			$('#right_sidebar div').hide();
-			$('#chat_twitch').show();
-
-			fixFullHeight();
-		});
-		$('#enable_chat_goodgame').click(function() {
-			$('#right_sidebar div').hide();
-			$('#chat_goodgame').show();
-
-			fixFullHeight();
-		});
-		$('#enable_chat_mixer').click(function() {
-			$('#right_sidebar div').hide();
-			$('#chat_mixer').show();
-
-			fixFullHeight();
-		});
-		$('#enable_chat_youtube').click(function() {
-			$('#right_sidebar div').hide();
-			$('#chat_youtube').show();
-
-			fixFullHeight();
-		});
-
-
-
 	</script>
 </body>
 </html>
