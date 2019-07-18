@@ -190,10 +190,10 @@
 					<iframe frameborder="0" scrolling="no" class="embed_player" src="https://goodgame.ru/player?148836" height="100%" width="100%"></iframe>
 				</div>
 				<div id="player_mixer">
-					<iframe frameborder="0" scrolling="no" class="embed_player" src="https://mixer.com/embed/player/i3aldram" height="100%" width="100%"></iframe>
+					<iframe frameborder="0" scrolling="no" class="embed_player" src="" height="100%" width="100%"></iframe>
 				</div>
 				<div id="player_youtube">
-					<iframe frameborder="0" scrolling="no" class="embed_player" src="https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ" height="100%" width="100%"></iframe>
+					<iframe frameborder="0" scrolling="no" class="embed_player" src="" height="100%" width="100%"></iframe>
 				</div>
 			</div>
 
@@ -241,13 +241,13 @@
 				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://twitch.tv/embed/psychopaticclaymore/chat?darkpopout" height="100%" width="100%"></iframe>
 			</div>
 			<div id="chat_goodgame" class="col">
-				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://goodgame.ru/chat/148836" height="100%" width="100%"></iframe>
+				<iframe frameborder="0" scrolling="no" class="embed_chat" src="" height="100%" width="100%"></iframe>
 			</div>
 			<div id="chat_mixer" class="col">
-				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://mixer.com/embed/chat/i3aldram" height="100%" width="100%"></iframe>
+				<iframe frameborder="0" scrolling="no" class="embed_chat" src="" height="100%" width="100%"></iframe>
 			</div>
 			<div id="chat_youtube" class="col">
-				<iframe frameborder="0" scrolling="no" class="embed_chat" src="https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=i3aldram.github.io" height="100%" width="100%"></iframe>
+				<iframe frameborder="0" scrolling="no" class="embed_chat" src="" height="100%" width="100%"></iframe>
 			</div>
 		</div>
 
@@ -305,8 +305,9 @@
 				$('#players div').hide();
 				$('#player_goodgame').show();
 
-				$('#player_mixer iframe').attr('src', $('#player_mixer iframe').attr('src'));
-				$('#player_youtube iframe').attr('src', $('#player_youtube iframe').attr('src'));
+				$('#player_goodgame iframe').attr('src', 'https://goodgame.ru/player?148836');
+				$('#player_mixer iframe').attr('src', '');
+				$('#player_youtube iframe').attr('src', '');
 
 				fixFullHeight();
 			});
@@ -314,8 +315,9 @@
 				$('#players div').hide();
 				$('#player_mixer').show();
 
-				$('#player_goodgame iframe').attr('src', $('#player_goodgame iframe').attr('src'));
-				$('#player_youtube iframe').attr('src', $('#player_youtube iframe').attr('src'));
+				$('#player_mixer iframe').attr('src', 'https://mixer.com/embed/player/i3aldram');
+				$('#player_goodgame iframe').attr('src', '');
+				$('#player_youtube iframe').attr('src', '');
 
 				fixFullHeight();
 			});
@@ -323,8 +325,10 @@
 				$('#players div').hide();
 				$('#player_youtube').show();
 
-				$('#player_goodgame iframe').attr('src', $('#player_goodgame iframe').attr('src'));
-				$('#player_mixer iframe').attr('src', $('#player_mixer iframe').attr('src'));
+
+				$('#player_youtube iframe').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
+				$('#player_goodgame iframe').attr('src', '');
+				$('#player_mixer iframe').attr('src', '');
 
 				fixFullHeight();
 			});
@@ -341,18 +345,21 @@
 			});
 			$('#enable_chat_goodgame').click(function() {
 				$('#right_sidebar div').hide();
+				$('#chat_goodgame iframe').attr('src', 'https://goodgame.ru/chat/148836');
 				$('#chat_goodgame').show();
 
 				fixFullHeight();
 			});
 			$('#enable_chat_mixer').click(function() {
 				$('#right_sidebar div').hide();
+				$('#chat_mixer iframe').attr('src', 'https://mixer.com/embed/chat/i3aldram');
 				$('#chat_mixer').show();
 
 				fixFullHeight();
 			});
 			$('#enable_chat_youtube').click(function() {
 				$('#right_sidebar div').hide();
+				$('#chat_youtube iframe').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=i3aldram.github.io');
 				$('#chat_youtube').show();
 
 				fixFullHeight();
