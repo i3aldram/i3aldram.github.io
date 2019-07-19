@@ -24,7 +24,7 @@ iframe {
 	background: #4b367c;
 	padding: 0 20px;
 	line-height: 50px;
-	font-size: 28px;
+	font-size: 28px !important;
 }
 
 #site_content {

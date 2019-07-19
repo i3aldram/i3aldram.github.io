@@ -17,11 +17,11 @@ $(document).ready(function () {
 			$xml = $(xml);
 			var streamTitle = $xml.find("title").text();
 			var streamGame = $xml.find("games").text();
-			var streamViewers = $xml.find("viewers").text();
+			var streamViewers = $xml.find("viewers").text()*1+1;
 			var streamUsersinchat = $xml.find("usersinchat").text();
 			$('#title').text('- ' + streamTitle);
 			$('#game').text('Игра: ' + streamGame);
-			$('#viewers').text('Зрителей: ' + streamUsersinchat);
+			$('#viewers').text('Зрителей: ' + streamViewers);
 		}
 	});
 
