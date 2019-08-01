@@ -95,7 +95,7 @@ $(document).ready(function () {
 	});
 	$('#enable_chat_youtube').click(function() {
 		$('#right_sidebar iframe').hide();
-		$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=i3aldram.github.io');
+		$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
 		$('#chat_youtube').show();
 
 		fixFullHeight();
