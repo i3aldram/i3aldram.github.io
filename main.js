@@ -56,7 +56,7 @@ $(document).ready(function () {
 		} else if(player === 'youtube') {
 			$('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
 		}
-		fixFullHeight();
+		// fixFullHeight();
 	});
 
 
@@ -65,15 +65,17 @@ $(document).ready(function () {
 		var chat = $(this).data('chat');
 		$('#right_sidebar iframe').hide();
 		$('#chat_'+chat).show();
-		fixFullHeight();
+		// fixFullHeight();
 	});
 	window.onload = function () {
 		setTimeout(function(){
-			console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!', 'onload');
+			$('#player_mixer').attr('src', 'https://mixer.com/embed/player/i3aldram');
+			$('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
+
 			$('#chat_goodgame').attr('src', 'https://goodgame.ru/chat/148836');
 			$('#chat_mixer').attr('src', 'https://mixer.com/embed/chat/i3aldram');
 			$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
-		}, 50);
+		}, 1);
 	}
 
 

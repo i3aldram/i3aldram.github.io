@@ -12,6 +12,11 @@ body {
 	transition: background-position 1s;
 }
 
+.chat-author__display-name,
+.chat-line__username {
+	display: none;
+}
+
 iframe {
 	border: none;
 	overflow: hidden;
