@@ -81,7 +81,7 @@ $(document).ready(function () {
 		} else if(chat === 'youtube' && $('#chat_youtube').attr('src') === '') {
 			$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
 		}
-		// fixFullHeight();
+		fixFullHeight();
 	}
 	$('.button_changeChat').click(function() {
 		changeChat($(this).data('chat'));
