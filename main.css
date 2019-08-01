@@ -6,10 +6,14 @@ body {
 	font-family: BigNoodleTooOblique, sans-serif;
 	font-size: 19px;
 	color: #fff;
-	background: url(doomguy_text.png), #0f0e11;
-	background-position: center 100%;
-	background-repeat: no-repeat;
-	transition: background-position 1s;
+	background: #0f0e11;
+}
+
+#chats {
+	position: fixed;
+	width: 340px;
+	height: 100%;
+	border-left: 1px solid hsla(0,0%,100%,.05)!important;
 }
 
 #chat_header {
@@ -47,11 +51,13 @@ iframe {
 
 #main_content {
 	flex: auto;
+	background: url(doomguy_text.png), #0f0e11;
+	background-position: center 100%;
+	background-repeat: no-repeat;
 	/*padding: 20px;*/
 }
 
 #right_sidebar {
-	border-left: 1px solid hsla(0,0%,100%,.05)!important;
 	width: 340px;
 	/*position: relative;*/
 }
@@ -72,11 +78,16 @@ iframe {
 }
 
 #player_mixer,
-#player_youtube,
+#player_youtube {
+	display: none;
+}
+
+#chat_twitch,
 #chat_goodgame,
 #chat_mixer,
 #chat_youtube {
-	display: none;
+	position: absolute;
+	/*top: 0;*/
 }
 
 .dropbtn {

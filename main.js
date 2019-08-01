@@ -31,9 +31,9 @@ $(document).ready(function () {
 
 	$(window).scroll(function() {
 		if($(window).scrollTop() + $(window).height() == $(document).height()){
-			$('body').css('background-position', 'center 100%');
+			$('#main_content').css('background-position', 'center 100%');
 		} else {
-			$('body').css('background-position', 'center 150%');
+			$('#main_content').css('background-position', 'center 150%');
 		}
 	});
 
@@ -69,12 +69,12 @@ $(document).ready(function () {
 	var changeChat = function(chat){
 		if(chat === ''){ chat = 'twitch' }
 		localStorage.setItem('chat', chat);
-		$('#right_sidebar iframe').hide();
-		$('#chat_'+chat).show();
+		$('#right_sidebar iframe').css("z-index","0");
+		$('#chat_'+chat).css("z-index","10000");
 		// $('#chat_header').show();
-		if(chat === 'twitch'){
-			$('#chat_header').hide();
-		}
+		// if(chat === 'twitch'){
+		// 	$('#chat_header').hide();
+		// }
 		if(chat === 'twitch' && $('#chat_twitch').attr('src') === ''){
 			$('#chat_twitch').attr('src', 'https://twitch.tv/embed/psychopaticclaymore/chat?darkpopout');
 		} else if(chat === 'goodgame' && $('#chat_goodgame').attr('src') === '') {
@@ -99,21 +99,25 @@ $(document).ready(function () {
 
 
 
-	window.onload = function () {
-		setTimeout(function(){
-			fixFullHeight();
-			$('#player_mixer').attr('src', 'https://mixer.com/embed/player/i3aldram');
-			$('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
-			$('#chat_goodgame').attr('src', 'https://goodgame.ru/chat/148836');
-			$('#chat_mixer').attr('src', 'https://mixer.com/embed/chat/i3aldram');
-			$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
-		}, 1);
-	}
+	$('#main_content').css('transition', 'background-position 1s');
+
+
 });
 
 
 
-
+	window.onload = function () {
+		setTimeout(function(){
+			if(localStorage.getItem('player') !== 'goodgame'){ $('#player_goodgame').attr('src', 'https://goodgame.ru/player?148836') };
+			if(localStorage.getItem('player') !== 'mixer'){ $('#player_mixer').attr('src', 'https://mixer.com/embed/player/i3aldram') };
+			if(localStorage.getItem('player') !== 'youtube'){ $('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ') };
+			if(localStorage.getItem('chat') !== 'twitch'){ $('#chat_twitch').attr('src', 'https://twitch.tv/embed/psychopaticclaymore/chat?darkpopout') };
+			if(localStorage.getItem('chat') !== 'goodgame'){ $('#chat_goodgame').attr('src', 'https://goodgame.ru/chat/148836') };
+			if(localStorage.getItem('chat') !== 'mixer'){ $('#chat_mixer').attr('src', 'https://mixer.com/embed/chat/i3aldram') };
+			if(localStorage.getItem('chat') !== 'youtube'){ $('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru') };
+			fixFullHeight();
+		}, 3000);
+	}
 
 
 
