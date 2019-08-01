@@ -12,9 +12,11 @@ body {
 	transition: background-position 1s;
 }
 
-.chat-author__display-name,
-.chat-line__username {
+#chat_header {
 	display: none;
+	height: 50px;
+	background-color: #232127!important;
+	border-bottom: 1px solid hsla(0,0%,100%,.05)!important;
 }
 
 iframe {

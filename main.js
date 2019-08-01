@@ -41,6 +41,7 @@ $(document).ready(function () {
 
 	$('.button_changePlayer').click(function() {
 		var player = $(this).data('player');
+		localStorage.setItem('player', player);
 
 		$('#players iframe').hide();
 		$('#player_'+player).show();
@@ -60,13 +61,23 @@ $(document).ready(function () {
 	});
 
 
-
-	$('.button_changeChat').click(function() {
-		var chat = $(this).data('chat');
+	var changeChat = function(_this){
+		var chat = _this.data('chat');
+		localStorage.setItem('chat', chat);
 		$('#right_sidebar iframe').hide();
 		$('#chat_'+chat).show();
+		$('#chat_header').show();
+		if(chat === 'twitch'){
+			$('#chat_header').hide();
+		}
 		// fixFullHeight();
+	}
+	$('.button_changeChat').click(function() {
+		changeChat($(this));
 	});
+
+
+
 	window.onload = function () {
 		setTimeout(function(){
 			$('#player_mixer').attr('src', 'https://mixer.com/embed/player/i3aldram');
@@ -77,9 +88,6 @@ $(document).ready(function () {
 			$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
 		}, 1);
 	}
-
-
-
 });
 
 
