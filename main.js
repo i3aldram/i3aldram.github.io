@@ -60,6 +60,9 @@ $(document).ready(function () {
 		changePlayer($(this).data('player'));
 	});
 	changePlayer(localStorage.getItem('player'));
+	$('#refreshPlayer').click(function() {
+		changePlayer(localStorage.getItem('player'));
+	});
 
 
 
@@ -68,7 +71,7 @@ $(document).ready(function () {
 		localStorage.setItem('chat', chat);
 		$('#right_sidebar iframe').hide();
 		$('#chat_'+chat).show();
-		$('#chat_header').show();
+		// $('#chat_header').show();
 		if(chat === 'twitch'){
 			$('#chat_header').hide();
 		}
@@ -81,7 +84,7 @@ $(document).ready(function () {
 		} else if(chat === 'youtube' && $('#chat_youtube').attr('src') === '') {
 			$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
 		}
-		fixFullHeight();
+		// fixFullHeight();
 	}
 	$('.button_changeChat').click(function() {
 		changeChat($(this).data('chat'));
