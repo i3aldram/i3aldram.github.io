@@ -39,17 +39,14 @@ $(document).ready(function () {
 
 
 
-	$('.button_changePlayer').click(function() {
-		var player = $(this).data('player');
+	var changePlayer = function(player){
+		if(player === undefined){ player = 'goodgame' }
 		localStorage.setItem('player', player);
-
 		$('#players iframe').hide();
 		$('#player_'+player).show();
-
 		$('#player_goodgame').attr('src', '');
 		$('#player_mixer').attr('src', '');
 		$('#player_youtube').attr('src', '');
-
 		if(player === 'goodgame'){
 			$('#player_goodgame').attr('src', 'https://goodgame.ru/player?148836');
 		} else if(player === 'mixer') {
@@ -58,11 +55,16 @@ $(document).ready(function () {
 			$('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
 		}
 		// fixFullHeight();
+	}
+	$('.button_changePlayer').click(function() {
+		changePlayer($(this).data('player'));
 	});
+	changePlayer(localStorage.getItem('player'));
 
 
-	var changeChat = function(_this){
-		var chat = _this.data('chat');
+
+	var changeChat = function(chat){
+		if(chat === ''){ chat = 'twitch' }
 		localStorage.setItem('chat', chat);
 		$('#right_sidebar iframe').hide();
 		$('#chat_'+chat).show();
@@ -70,11 +72,27 @@ $(document).ready(function () {
 		if(chat === 'twitch'){
 			$('#chat_header').hide();
 		}
+		if(chat === 'twitch' && $('#chat_twitch').attr('src') === ''){
+			$('#chat_twitch').attr('src', 'https://twitch.tv/embed/psychopaticclaymore/chat?darkpopout');
+		} else if(chat === 'goodgame' && $('#chat_goodgame').attr('src') === '') {
+			$('#chat_goodgame').attr('src', 'https://goodgame.ru/chat/148836');
+		} else if(chat === 'mixer' && $('#chat_mixer').attr('src') === '') {
+			$('#chat_mixer').attr('src', 'https://mixer.com/embed/chat/i3aldram');
+		} else if(chat === 'youtube' && $('#chat_youtube').attr('src') === '') {
+			$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
+		}
 		// fixFullHeight();
 	}
 	$('.button_changeChat').click(function() {
-		changeChat($(this));
+		changeChat($(this).data('chat'));
 	});
+	changeChat(localStorage.getItem('chat'));
+
+
+
+	// localStorage.removeItem("player");
+	// localStorage.removeItem("chat");
+	// localStorage.clear();
 
 
 
@@ -82,7 +100,6 @@ $(document).ready(function () {
 		setTimeout(function(){
 			$('#player_mixer').attr('src', 'https://mixer.com/embed/player/i3aldram');
 			$('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
-
 			$('#chat_goodgame').attr('src', 'https://goodgame.ru/chat/148836');
 			$('#chat_mixer').attr('src', 'https://mixer.com/embed/chat/i3aldram');
 			$('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru');
