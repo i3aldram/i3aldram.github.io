@@ -3,8 +3,8 @@ $(document).ready(function () {
 
 
 	var fixFullHeight = function(){
-		var playerWidth = $('iframe').width();
-		$('#players iframe').height(playerWidth / 16*9);
+		var playerWidth = $('#players').width();
+		$('#players').height(playerWidth / 16*9);
 		$('#right_sidebar').height($(window).height());
 	};
 	fixFullHeight();
@@ -54,7 +54,7 @@ $(document).ready(function () {
 		} else if(player === 'youtube') {
 			$('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
 		}
-		// fixFullHeight();
+		fixFullHeight();
 	}
 	$('.button_changePlayer').click(function() {
 		changePlayer($(this).data('player'));
@@ -101,6 +101,7 @@ $(document).ready(function () {
 
 	window.onload = function () {
 		setTimeout(function(){
+			fixFullHeight();
 			$('#player_mixer').attr('src', 'https://mixer.com/embed/player/i3aldram');
 			$('#player_youtube').attr('src', 'https://youtube.com/embed/live_stream?channel=UCLDNOUXbiutEIGSWy3d1UiQ');
 			$('#chat_goodgame').attr('src', 'https://goodgame.ru/chat/148836');
