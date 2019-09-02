@@ -102,9 +102,6 @@ $(document).ready(function () {
 	$('#main_content').css('transition', 'background-position 1s');
 
 
-});
-
-
 
 	window.onload = function () {
 		setTimeout(function(){
@@ -116,11 +113,6 @@ $(document).ready(function () {
 			if(localStorage.getItem('chat') !== 'mixer'){ $('#chat_mixer').attr('src', 'https://mixer.com/embed/chat/i3aldram') };
 			if(localStorage.getItem('chat') !== 'youtube'){ $('#chat_youtube').attr('src', 'https://youtube.com/live_chat?is_popout=1&v=-1O2IaTCzqA&embed_domain=baldram.ru') };
 			fixFullHeight();
-		}, 3000);
+		}, 10*1000);
 	}
-
-
-
-
-
-
+});
